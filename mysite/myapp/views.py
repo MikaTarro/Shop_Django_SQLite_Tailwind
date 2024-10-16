@@ -15,6 +15,7 @@ def index(request):
     if item_name != '' and item_name is not None:
         page_obj = items.filter(name__icontains=item_name)
 
+    assert isinstance(page_obj, object)
     paginator = Paginator(page_obj, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
